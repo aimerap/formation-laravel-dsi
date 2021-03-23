@@ -5,8 +5,8 @@
             <div class="col-md-12">
                  <br>
                   <div class="jumbotron">
-                      <h1 class="display-5">Service en ligne de mon Ministère</h1>
-                      <p class="lead">Ministere de Laravel au Burkina Faso </p>
+                      <h1 class="display-5"> {{ $nomSite }} </h1>
+                      <p class="lead"> {{ $nomMinistere }} </p>
                       <hr class="my-2">
                       <p>Pour souscrire à la procédure en ligne, veuillez vous connecter à votre compte et de cliquer sur <b>Nouvelle Procédure</b> </p>
                       <p class="lead">

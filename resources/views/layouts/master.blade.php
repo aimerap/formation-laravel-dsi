@@ -27,7 +27,7 @@
                                 <a class="nav-link" href="{{ route('accueil') }}">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('procedure') }}">La Procédure</a>
+                                <a class="nav-link" href="{{ route('procedure', "burkina faso - Ouagadougou") }}">La Procédure</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connexion</a>
