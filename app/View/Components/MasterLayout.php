@@ -6,14 +6,11 @@ use Illuminate\View\Component;
 
 class MasterLayout extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $titrePage;
+    
+    public function __construct($titrePage)
     {
-        //
+        $this->titrePage = $titrePage;
     }
 
     /**

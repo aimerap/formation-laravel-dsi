@@ -36,6 +36,9 @@
                                     <a class="dropdown-item" href="#">Créer votre compte</a>
                                 </div>
                             </li>
+                            {{-- <li class="nav-item active">
+                                <a class="nav-link" href="">{{ $titrePage ?? 'Pas de question' }} <span class="sr-only">(current)</span></a>
+                            </li> --}}
                         </ul>
                         
                     </div>
@@ -46,7 +49,7 @@
 
     <main>
 
-       {{ $slot }}
+      {{ $slot }}
            
     </main>
     

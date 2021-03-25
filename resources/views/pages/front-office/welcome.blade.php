@@ -1,4 +1,4 @@
-<x-master-layout>
+<x-master-layout titrePage='Faso'>
 
     <div class="container">
         <div class="row">
