@@ -18,4 +18,9 @@ Route::get('modification/{id}', [MainController::class, "modifierProduit"]);
 Route::get('supprimer/{id}', [MainController::class, "supprimer"])->name('delete');
 
 
+Route::get('deletecommande/{id}', [MainController::class, "deletecommande"])->name('deletecommande');
+
+Route::get('ajoutercommande/{id}', [MainController::class, "ajoutercommande"])->name('ajoutercommande');
+
+
 Route::get('produits/liste', [MainController::class, "getList"])->name('produits.liste');

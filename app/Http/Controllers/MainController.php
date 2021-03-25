@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produit;
+use App\Models\Commande;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -65,7 +66,9 @@ class MainController extends Controller
     public function getList()
     {
         return view("pages.front-office.list-produits",[
-            "lesproduits"=> Produit::all()
+            "lesproduits"=> Produit::paginate(6),
+            "lescommande"=> Commande::paginate(6),
+
         ]);
 
     }
@@ -77,7 +80,6 @@ class MainController extends Controller
             "description" => "La description de Orange",
         ]);
 
-        dd($produitModifie);
     }
 
 
@@ -87,5 +89,20 @@ class MainController extends Controller
         return redirect()->back()->with('statut','Supprimer avec succes');
     }
 
+    public function deletecommande($id)
+    {
+        Commande::destroy($id);
+        return redirect()->back()->with('statut','Commande a été supprimé avec succes');
+    }
+
+
+    public function ajoutercommande($id){
+        $commande= new Commande();
+        $commande->produit_id=$id;
+        $commande->uuid=Str::uuid();
+        $commande->save();
+        // dd($commande);
+        return redirect()->back()->with("statut","Commande ajouté avec succes !");
+    }
     
 }

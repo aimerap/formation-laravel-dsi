@@ -18,4 +18,7 @@ class Produit extends Model
         'pays_source', 
         'poids'
     ];
+    public function commande(){
+        return $this->hasMany(Commande::class);
+    }
 }
