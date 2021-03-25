@@ -64,10 +64,9 @@ class MainController extends Controller
 
     public function getList()
     {
-        $produits = Produit::all();
-
-
-        return view("pages.front-office.list-produits");
+        return view("pages.front-office.list-produits",[
+            "lesproduits"=> Produit::all()
+        ]);
 
     }
 
@@ -85,6 +84,7 @@ class MainController extends Controller
     public function supprimer($id)
     {
         Produit::destroy($id);
+        return redirect()->back()->with('statut','Supprimer avec succes');
     }
 
     

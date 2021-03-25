@@ -15,4 +15,7 @@ Route::get("list-produits", [MainController::class, "getList"])->name("list");
 
 Route::get('modification/{id}', [MainController::class, "modifierProduit"]);
 
-Route::get('supprimer/{id}', [MainController::class, "supprimer"]);
+Route::get('supprimer/{id}', [MainController::class, "supprimer"])->name('delete');
+
+
+Route::get('produits/liste', [MainController::class, "getList"])->name('produits.liste');
