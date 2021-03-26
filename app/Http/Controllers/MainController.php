@@ -66,12 +66,10 @@ class MainController extends Controller
     {
         $produit = Produit::first();
         $user = User::first();
-        // dd($user);
+        $produit->users()->attach($user);
         $users = $produit->users;
-        // if($users instanceof)
-        $produit->users->attach($user->id);
-
-        dd($produit, $users);
+        $produits = $user->produits;
+        dd($produits);
 
         return view('pages.front-office.list-produits', [
             'lesproduits' => Produit::paginate(6),
