@@ -2,38 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produit;
 use App\Models\Commande;
+use App\Models\Produit;
+use App\Models\User;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function afficheAcceuil()
     {
         // Fonction retournant une page avec des params
-        return view('pages.front-office.welcome', 
+        return view('pages.front-office.welcome',
         [
-           'nomSite'      => 'Service en ligne de mon Ministère',   
-           'nomMinistere' => 'Ministere de Laravel au Burkina Faso',   
+           'nomSite' => 'Service en ligne de mon Ministère',
+           'nomMinistere' => 'Ministere de Laravel au Burkina Faso',
         ]
         );
     }
-    
+
     public function afficheProcedure($param)
     {
         // Fonction retournant une page avec des params recemment entrées
-       return view('pages.front-office.procedure', 
+        return view('pages.front-office.procedure',
         [
-            'parametre' => $param,       
-            'question' => 'baba'       
+            'parametre' => $param,
+            'question' => 'baba',
         ]);
     }
 
     // fonction pour creer un nouveau produit - PREMIERE APPROCHE
     public function ajoutProduit()
     {
-        $produit = New Produit();
+        $produit = new Produit();
 
         $produit->uuid = Str::uuid();
         $produit->designation = 'Tomate';
@@ -46,63 +46,68 @@ class MainController extends Controller
         $produit->save();
     }
 
-    // fonction pour creer un nouveau produit - DEUXIEME APPROCHE  
+    // fonction pour creer un nouveau produit - DEUXIEME APPROCHE
     public function ajoutProduitEncore()
     {
         Produit::create(
             [
-                'uuid'          => Str::uuid(),
-                'designation'   => 'Mangue',
-                'description'   => 'Mangue bien grosse et sucrée! Yaa Proprè !',
-                'prix'          => 1500,
-                'like'          => 63,
-                'pays_source'   => 'Togo',
-                'poids'         => 89.5
+                'uuid' => Str::uuid(),
+                'designation' => 'Mangue',
+                'description' => 'Mangue bien grosse et sucrée! Yaa Proprè !',
+                'prix' => 1500,
+                'like' => 63,
+                'pays_source' => 'Togo',
+                'poids' => 89.5,
             ]
         );
     }
 
-
     public function getList()
     {
-        return view("pages.front-office.list-produits",[
-            "lesproduits"=> Produit::paginate(6),
-            "lescommande"=> Commande::paginate(6),
+        $produit = Produit::first();
+        $user = User::first();
+        // dd($user);
+        $users = $produit->users;
+        // if($users instanceof)
+        $produit->users->attach($user->id);
 
+        dd($produit, $users);
+
+        return view('pages.front-office.list-produits', [
+            'lesproduits' => Produit::paginate(6),
+            'lescommande' => Commande::paginate(6),
         ]);
-
     }
 
     public function modifierProduit($id)
     {
-        $produitModifie = Produit::where("id", $id)->update([
-            "designation" => "Orange",
-            "description" => "La description de Orange",
+        $produitModifie = Produit::where('id', $id)->update([
+            'designation' => 'Orange',
+            'description' => 'La description de Orange',
         ]);
-
     }
-
 
     public function supprimer($id)
     {
         Produit::destroy($id);
-        return redirect()->back()->with('statut','Supprimer avec succes');
+
+        return redirect()->back()->with('statut', 'Supprimer avec succes');
     }
 
     public function deletecommande($id)
     {
         Commande::destroy($id);
-        return redirect()->back()->with('statut','Commande a été supprimé avec succes');
+
+        return redirect()->back()->with('statut', 'Commande a été supprimé avec succes');
     }
 
-
-    public function ajoutercommande($id){
-        $commande= new Commande();
-        $commande->produit_id=$id;
-        $commande->uuid=Str::uuid();
+    public function ajoutercommande($id)
+    {
+        $commande = new Commande();
+        $commande->produit_id = $id;
+        $commande->uuid = Str::uuid();
         $commande->save();
         // dd($commande);
-        return redirect()->back()->with("statut","Commande ajouté avec succes !");
+        return redirect()->back()->with('statut', 'Commande ajouté avec succes !');
     }
-    
 }

@@ -10,15 +10,22 @@ class Produit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'uuid', 
-        'designation', 
-        'description', 
-        'prix', 
-        'like', 
-        'pays_source', 
-        'poids'
+        'uuid',
+        'designation',
+        'description',
+        'prix',
+        'like',
+        'pays_source',
+        'poids',
     ];
-    public function commande(){
+
+    public function commande()
+    {
         return $this->hasMany(Commande::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }
