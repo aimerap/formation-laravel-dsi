@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProduitFormRequest;
 use App\Models\Commande;
 use App\Models\Produit;
 use App\Models\User;
@@ -107,5 +108,25 @@ class MainController extends Controller
         $commande->save();
         // dd($commande);
         return redirect()->back()->with('statut', 'Commande ajouté avec succes !');
+    }
+
+    public function ajouterProduit()
+    {
+        return view('pages.front-office.ajouter-produit');
+    }
+
+    public function enregistrerProduit(ProduitFormRequest $request)
+    {
+        $produit = Produit::create([
+            'uuid' => Str::uuid(),
+            'designation' => $request->designation,
+            'prix' => $request->prix,
+            'description' => $request->description,
+            'pays_source' => $request->pays_source,
+            'like' => $request->like,
+            'poids' => $request->poids,
+        ]);
+
+        dd($produit);
     }
 }

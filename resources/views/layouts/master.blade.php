@@ -8,12 +8,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- 
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
- 
+
 </head>
   <body>
-    
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-success">
             <div class="container">
@@ -44,7 +44,7 @@
                                 <a class="nav-link" href="">{{ $titrePage ?? 'Pas de question' }} <span class="sr-only">(current)</span></a>
                             </li> --}}
                         </ul>
-                        
+
                     </div>
                 </nav>
             </div>
@@ -54,10 +54,10 @@
     <main>
 
       {{ $slot }}
-           
+
     </main>
-    
-    <br> 
+
+    <br>
 
    <footer class="bg-success text-white">
         <div class="container">
@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <small>
-                        @Copyright 2021 | Mon Ministere | Burkina Faso 
+                        @Copyright 2021 | Mon Ministere | Burkina Faso
                     </small>
                 </div>
             </div>
