@@ -25,3 +25,7 @@ Route::get('produits/liste', [MainController::class, 'getList'])->name('produits
 Route::get('produits/ajouter', [MainController::class, 'ajouterProduit'])->name('produit.ajout');
 
 Route::post('produits/engregistrer', [MainController::class, 'enregistrerProduit'])->name('produits.enregister');
+
+Route::get('produits/modifier/{id}', [MainController::class, 'editProduit'])->name('produits.modifier');
+
+Route::put('produits/update/{id}', [MainController::class, 'updateProduit'])->name('produits.update');

@@ -70,7 +70,7 @@ class MainController extends Controller
         $produit->users()->attach($user);
         $users = $produit->users;
         $produits = $user->produits;
-        dd($produits);
+        // dd($produits);
 
         return view('pages.front-office.list-produits', [
             'lesproduits' => Produit::paginate(6),
@@ -128,5 +128,19 @@ class MainController extends Controller
         ]);
 
         dd($produit);
+    }
+
+    public function editProduit($id)
+    {
+        $produit = Produit::find($id);
+        // dd($produit);
+        return view('pages.front-office.edit-produit', [
+            'produit' => $produit,
+        ]);
+    }
+
+    public function updateProduit()
+    {
+        dd('ok');
     }
 }
