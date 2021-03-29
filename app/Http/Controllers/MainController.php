@@ -130,17 +130,32 @@ class MainController extends Controller
         dd($produit);
     }
 
-    public function editProduit($id)
+    /**
+     * Display the specified resource.
+     * @param  \App\Models\Produit  $produit
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Produit $produit)
     {
-        $produit = Produit::find($id);
+        // dd($produit);
+        $produit = Produit::findOrfail($produit->id);
         // dd($produit);
         return view('pages.front-office.edit-produit', [
             'produit' => $produit,
         ]);
     }
 
-    public function updateProduit()
+    public function updateProduit(ProduitFormRequest $request, $id)
     {
-        dd('ok');
+        Produit::where('id', $id)->update([
+        'designation' => $request->designation,
+        'prix' => $request->prix,
+        'description' => $request->description,
+        'like' => $request->like,
+        'pays_source' => $request->pays_source,
+        'poids' => $request->poids,
+       ]);
+
+        return redirect()->route('produits.liste')->with('statut', 'Le produit a bien été modifié !');
     }
 }

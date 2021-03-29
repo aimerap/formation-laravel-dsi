@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Poids</label>
-                    <input value="{{ $produit->poids }}" type="number" name="poids" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    <input value="{{ $produit->poids }}" type="number" name="poids" class="form-control">
                     @error('poids')
                     <small class="text-danger" > {{ $message }} </small>
                     @enderror

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProduitController;
 
 Route::get('/', [MainController::class, 'afficheAcceuil'])->name('accueil');
 
@@ -26,6 +27,8 @@ Route::get('produits/ajouter', [MainController::class, 'ajouterProduit'])->name(
 
 Route::post('produits/engregistrer', [MainController::class, 'enregistrerProduit'])->name('produits.enregister');
 
-Route::get('produits/modifier/{id}', [MainController::class, 'editProduit'])->name('produits.modifier');
+Route::get('produits/modifier/{produit}', [MainController::class, 'edit'])->name('produits.modifier');
 
 Route::put('produits/update/{id}', [MainController::class, 'updateProduit'])->name('produits.update');
+
+Route::resource('produits', ProduitController::class);
