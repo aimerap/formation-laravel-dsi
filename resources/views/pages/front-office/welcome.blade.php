@@ -1,5 +1,4 @@
 <x-master-layout titrePage='Faso'>
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -16,11 +15,10 @@
                               </svg>
                           </a>
                       </p>
-                  </div>  
+                  </div>
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -30,7 +28,7 @@
                          <h4 class="card-title">Faites votre demande</h4>
                          <p class="card-text">Votre demande en ligne en renseignant le formulaire de soumission</p>
                      </div>
-                 </div>   
+                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
@@ -39,7 +37,7 @@
                         <h4 class="card-title">Payez les frais et taxes</h4>
                         <p class="card-text">Payez directement les frais liés a votre demande directement en ligne</p>
                     </div>
-                </div>   
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
@@ -48,9 +46,8 @@
                         <h4 class="card-title">Retirez votre dossier</h4>
                         <p class="card-text">Vous serez notifiés pour aller récupérer votre dossier déjà signé</p>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
-
 </x-master-layout>

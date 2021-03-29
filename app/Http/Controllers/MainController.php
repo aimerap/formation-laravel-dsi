@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProduitFormRequest;
-use App\Models\Commande;
-use App\Models\Produit;
 use App\Models\User;
+use App\Models\Produit;
+use App\Models\Commande;
 use Illuminate\Support\Str;
+use App\Exports\ProduitsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\ProduitFormRequest;
 
 class MainController extends Controller
 {
@@ -157,5 +159,10 @@ class MainController extends Controller
        ]);
 
         return redirect()->route('produits.liste')->with('statut', 'Le produit a bien été modifié !');
+    }
+
+    public function excelExport()
+    {
+        return Excel::download(new ProduitsExport, "Produits.xls");
     }
 }

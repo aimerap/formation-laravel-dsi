@@ -32,3 +32,5 @@ Route::get('produits/modifier/{produit}', [MainController::class, 'edit'])->name
 Route::put('produits/update/{id}', [MainController::class, 'updateProduit'])->name('produits.update');
 
 Route::resource('produits', ProduitController::class);
+
+Route::get("export-excel", [MainController::class, "excelExport"])->name("excel.export");
