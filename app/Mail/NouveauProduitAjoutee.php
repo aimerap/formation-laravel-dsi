@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class NouveauProduitAjoutee extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $produit;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($produit)
     {
-        //
+        $this->produit = $produit;
     }
 
     /**

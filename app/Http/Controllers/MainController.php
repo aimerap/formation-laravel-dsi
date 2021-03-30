@@ -130,6 +130,8 @@ class MainController extends Controller
             'like' => $request->like,
             'poids' => $request->poids,
         ]);
+        $user = User::first();
+        Mail::to($user)->send(new NouveauProduitAjoutee($produit));
 
         dd($produit);
     }
@@ -168,11 +170,5 @@ class MainController extends Controller
         return Excel::download(new ProduitsExport, "Produits.xls");
     }
 
-    public function sendMail()
-    {
-        $user = User::fisrt();
-        Mail::send($user, new NouveauProduitAjoutee);
-        dd("Le mail a bien été envoyé");
-    }
 }
 
