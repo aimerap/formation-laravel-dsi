@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\User;
 use App\Models\Produit;
 use App\Mail\NouveauProduitAjoutee;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProduitController;
+use App\Notifications\NouveauProduitNotification;
 
 Route::get('/', [MainController::class, 'afficheAcceuil'])->name('accueil');
 
@@ -42,4 +44,12 @@ Route::get("send-mail", [MainController::class, "sendMail"]);
 Route::get("test-mail", function(){
     $produit = Produit::first();
     return new NouveauProduitAjoutee($produit);
+});
+
+Route::get("test-notification", function(){
+$user = User::first();
+$produit = Produit::first();
+$user->notify(new NouveauProduitNotification($produit));
+
+dd("Notification envoyée !");
 });

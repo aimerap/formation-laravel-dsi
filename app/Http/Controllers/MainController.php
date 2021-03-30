@@ -11,6 +11,8 @@ use App\Mail\NouveauProduitAjoutee;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\ProduitFormRequest;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NouveauProduitNotification;
 
 class MainController extends Controller
 {
@@ -130,10 +132,14 @@ class MainController extends Controller
             'like' => $request->like,
             'poids' => $request->poids,
         ]);
-        $users = User::all();
-        Mail::to($users)->send(new NouveauProduitAjoutee($produit));
+        // $users = User::all();
+        // Mail::to($users)->send(new NouveauProduitAjoutee($produit));
+        // $user = User::first();
+        // $user->notify(new NouveauProduitNotification($produit));
 
-        dd($produit);
+        $users = User::all();
+        Notification::send($users, new NouveauProduitNotification($produit));
+        // dd($produit);
     }
 
     /**

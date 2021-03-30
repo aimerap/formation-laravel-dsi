@@ -19,6 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        "phone_number",
         'password',
     ];
 
@@ -45,4 +46,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Produit::class);
     }
+
+    public function routeNotificationForNexmo($notification)
+    {
+        return $this->phone_number;
+    }
+}
 }
