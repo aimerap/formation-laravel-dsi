@@ -28,6 +28,6 @@ class NouveauProduitAjoutee extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.produits.nouveau-produit-ajoute');
+        return $this->subject("Un noveau Produit vient d'etre ajouté sur votre plateforme")->markdown('emails.produits.nouveau-produit-ajoute');
     }
 }

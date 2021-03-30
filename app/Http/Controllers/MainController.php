@@ -130,8 +130,8 @@ class MainController extends Controller
             'like' => $request->like,
             'poids' => $request->poids,
         ]);
-        $user = User::first();
-        Mail::to($user)->send(new NouveauProduitAjoutee($produit));
+        $users = User::all();
+        Mail::to($users)->send(new NouveauProduitAjoutee($produit));
 
         dd($produit);
     }

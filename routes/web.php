@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Produit;
+use App\Mail\NouveauProduitAjoutee;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProduitController;
-use App\Mail\NouveauProduitAjoutee;
 
 Route::get('/', [MainController::class, 'afficheAcceuil'])->name('accueil');
 
@@ -39,5 +40,6 @@ Route::get("export-excel", [MainController::class, "excelExport"])->name("excel.
 Route::get("send-mail", [MainController::class, "sendMail"]);
 
 Route::get("test-mail", function(){
-    return new NouveauProduitAjoutee();
+    $produit = Produit::first();
+    return new NouveauProduitAjoutee($produit);
 });

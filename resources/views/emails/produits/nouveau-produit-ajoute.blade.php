@@ -1,10 +1,18 @@
 @component('mail::message')
-# Bienvenue Sur notre plateforme
+# Noueau Produit sur notre plateform
+Un nouveau produit vient d'etre ajouté sur notre plateforme
 
-Ceci est un mail test
+Vous trouverez ci-dessous les informations du produit
 
-@component('mail::button', ['url' => ''])
-Connectez-vous
+## Désignation: {{ $produit->designation }}
+
+## Prix: {{ $produit->prix }}
+
+## Description du produit:
+{{ $produit->description }}
+
+@component('mail::button', ['url' => url("/list-produits")])
+Voir le produit
 @endcomponent
 
 Merci,<br>
