@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Mail\NouveauProduitAjoutee;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProduitController;
@@ -34,3 +36,5 @@ Route::put('produits/update/{id}', [MainController::class, 'updateProduit'])->na
 Route::resource('produits', ProduitController::class);
 
 Route::get("export-excel", [MainController::class, "excelExport"])->name("excel.export");
+
+Route::get("test-mail", [MainController::class, "sendMail"]);

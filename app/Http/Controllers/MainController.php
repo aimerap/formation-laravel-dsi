@@ -7,6 +7,8 @@ use App\Models\Produit;
 use App\Models\Commande;
 use Illuminate\Support\Str;
 use App\Exports\ProduitsExport;
+use App\Mail\NouveauProduitAjoutee;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\ProduitFormRequest;
 
@@ -165,4 +167,12 @@ class MainController extends Controller
     {
         return Excel::download(new ProduitsExport, "Produits.xls");
     }
+
+    public function sendMail()
+    {
+        $user = User::fisrt();
+        Mail::send($user, new NouveauProduitAjoutee);
+        dd("Le mail a bien été envoyé");
+    }
 }
+
