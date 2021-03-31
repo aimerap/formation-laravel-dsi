@@ -18,7 +18,7 @@
 
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-success">
-            <a class="navbar-brand ml-5" href="{{ route('accueil') }}">Formation DSI</a>
+            <a class="navbar-brand" href="{{ route('accueil') }}">Formation DSI</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse d-flex justify-content-between" id="collapsibleNavId">
@@ -33,9 +33,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('produits.liste') }}">La Liste des produits</a>
                     </li>
-
-                </ul>
-                <ul class="navbar-nav mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         @guest
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connexion</a>
@@ -62,6 +59,34 @@
                     </li>
 
                 </ul>
+
+                <ul class="navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        @guest
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connexion</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                            <a class="dropdown-item" href="{{ route('register') }}">Créer votre compte</a>
+                        </div>
+                        @else
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="{{ route('logout') }}"  onClick="
+                            event.preventDefault();
+                            document.getElementById('deconnexion').submit();
+                            " >Déconnexion</a>
+                            <form id="deconnexion" method="post" action="{{ route('logout') }}">
+                            @csrf
+
+                            </form>
+
+                        </div>
+
+                        @endguest
+
+                    </li>
+                </ul>
+
             </div>
         </nav>
     </header>
