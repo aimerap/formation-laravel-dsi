@@ -19,7 +19,7 @@ class MainController extends Controller
 {
     public function afficheAcceuil()
     {
-        dd(Auth::user()->role);
+        // dd(Auth::user()->role);
         // Fonction retournant une page avec des params
         return view('pages.front-office.welcome',
         [
