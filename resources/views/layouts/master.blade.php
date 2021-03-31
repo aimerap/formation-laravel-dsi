@@ -36,11 +36,19 @@
                                 <a class="nav-link" href="{{ route('produits.liste') }}">La Liste des produits</a>
                             </li>
                             <li class="nav-item dropdown">
+
+
+                                @guest
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connexion</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownId">
-                                    <a class="dropdown-item" href="#">Login</a>
-                                    <a class="dropdown-item" href="#">Créer votre compte</a>
+                                    <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                                    <a class="dropdown-item" href="{{ route('register') }}">Créer votre compte</a>
                                 </div>
+                                @else
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Je suis déjà connnecté</a>
+
+                                @endguest
+
                             </li>
                             {{-- <li class="nav-item active">
                                 <a class="nav-link" href="">{{ $titrePage ?? 'Pas de question' }} <span class="sr-only">(current)</span></a>
