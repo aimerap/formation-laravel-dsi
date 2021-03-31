@@ -1,13 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Produit;
 use App\Models\Commande;
 use Illuminate\Support\Str;
 use App\Exports\ProduitsExport;
 use App\Mail\NouveauProduitAjoutee;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\ProduitFormRequest;
@@ -18,6 +19,7 @@ class MainController extends Controller
 {
     public function afficheAcceuil()
     {
+        dd(Auth::user()->role);
         // Fonction retournant une page avec des params
         return view('pages.front-office.welcome',
         [
