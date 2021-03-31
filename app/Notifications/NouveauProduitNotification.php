@@ -3,9 +3,10 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\NexmoMessage;
 
 class NouveauProduitNotification extends Notification
 {
@@ -29,7 +30,7 @@ class NouveauProduitNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', "nexmo"];
     }
 
     /**
@@ -59,6 +60,6 @@ class NouveauProduitNotification extends Notification
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)
-                    ->content('Your SMS message content');
+                    ->content("Test d'envoi de notification SMS en Laravel");
     }
 }

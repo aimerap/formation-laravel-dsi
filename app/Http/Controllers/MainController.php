@@ -137,8 +137,8 @@ class MainController extends Controller
         // $user = User::first();
         // $user->notify(new NouveauProduitNotification($produit));
 
-        $users = User::all();
-        Notification::send($users, new NouveauProduitNotification($produit));
+        $user = User::first();
+        Notification::send($user, new NouveauProduitNotification($produit));
         // dd($produit);
     }
 

@@ -52,4 +52,3 @@ class User extends Authenticatable
         return $this->phone_number;
     }
 }
-}
