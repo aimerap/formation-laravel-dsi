@@ -45,7 +45,18 @@
                                     <a class="dropdown-item" href="{{ route('register') }}">Créer votre compte</a>
                                 </div>
                                 @else
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Je suis déjà connnecté</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"  onClick="
+                                    event.preventDefault();
+                                    document.getElementById('deconnexion').submit();
+                                    " >Déconnexion</a>
+                                    <form id="deconnexion" method="post" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    </form>
+
+                                </div>
 
                                 @endguest
 
