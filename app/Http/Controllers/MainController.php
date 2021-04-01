@@ -127,6 +127,13 @@ class MainController extends Controller
 
     public function enregistrerProduit(ProduitFormRequest $request)
     {
+        // dd(time());
+        // dd($request->file("image")->getClientOriginalName());
+        $imageName = "default-image.png";
+        if($request->file("image")){
+            $imageName = time()."_".$request->file("image")->getClientOriginalName();
+            $request->file("image")->storeAs("public/produits-images", $imageName);
+        }
         $produit = Produit::create([
             'uuid' => Str::uuid(),
             'designation' => $request->designation,
@@ -135,6 +142,7 @@ class MainController extends Controller
             'pays_source' => $request->pays_source,
             'like' => $request->like,
             'poids' => $request->poids,
+            "image" => $imageName,
         ]);
         // $users = User::all();
         // Mail::to($users)->send(new NouveauProduitAjoutee($produit));

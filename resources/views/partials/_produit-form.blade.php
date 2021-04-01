@@ -49,8 +49,7 @@
 </div>
 
 <div class="custom-file mb-5 mt-4">
-    <input id="image" type="file" name="image" class="custom-file-input">
-    <label class="custom-file-label" for="image" >Image</label>
+    <input id="image" type="file" name="image" class="">
     @error('image')
     <small class="text-danger" > {{ $message }} </small>
     @enderror

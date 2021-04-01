@@ -30,6 +30,8 @@ class ProduitFormRequest extends FormRequest
             'poids' => 'required|digits_between:1,2',
             'like' => 'required|digits_between:1,2',
             'pays_source' => 'required|min:3|max:255',
+            "image" => "file|mimes:png,jpg,jpeg,bmp,svg|nullable"
+
         ];
     }
 }

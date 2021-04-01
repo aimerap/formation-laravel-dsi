@@ -42,7 +42,10 @@
                     <tbody>
                         @foreach ($lesproduits as $produit)
                             <tr>
-                                <td> {{ $produit->designation }} </td>
+                                <td>
+                                    <img class="" src="{{ asset('storage/produits-images/'.$produit->image) }}" alt="">
+                                    {{ $produit->designation }}
+                                </td>
                                 <td> {{ bf_currency($produit->prix) }}</td>
                                 <td> {{ $produit->pays_source }} </td>
                                 <td>
