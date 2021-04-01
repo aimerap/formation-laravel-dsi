@@ -120,7 +120,9 @@ class MainController extends Controller
 
     public function ajouterProduit()
     {
-        return view('pages.front-office.ajouter-produit');
+        $produit = new Produit;
+        // dd($produit);
+        return view('pages.front-office.ajouter-produit', ["produit"=>$produit]);
     }
 
     public function enregistrerProduit(ProduitFormRequest $request)
@@ -139,9 +141,10 @@ class MainController extends Controller
         // $user = User::first();
         // $user->notify(new NouveauProduitNotification($produit));
 
-        $user = User::first();
-        Notification::send($user, new NouveauProduitNotification($produit));
+        // $user = User::first();
+        // Notification::send($user, new NouveauProduitNotification($produit));
         // dd($produit);
+        return redirect()->route("list")->with("statut", "Produit Ajouté avec succès");
     }
 
     /**

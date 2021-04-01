@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6">
             <h3>Liste des produits</h3>
-            {{-- @if (session('statut'))
+            @if (session('statut'))
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -13,7 +13,7 @@
                 </button>
                 {{session('statut')}}
             </div>
-            @endif --}}
+            @endif
             <div class="row">
                 <div class="d-flex">
                     @if(Auth::user()!=null && Auth::user()->isAdmin())
@@ -43,7 +43,7 @@
                         @foreach ($lesproduits as $produit)
                             <tr>
                                 <td> {{ $produit->designation }} </td>
-                                <td> {{ $produit->prix }} XOF</td>
+                                <td> {{ bf_currency($produit->prix) }}</td>
                                 <td> {{ $produit->pays_source }} </td>
                                 <td>
                                     <div class="d-flex">
@@ -93,13 +93,13 @@
         </div>
         <div class="col-md-6">
             <h3>Liste des commandes</h3>
-            @if (session('statut'))
+            @if (session('statutCmmande'))
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">Close</span>
                 </button>
-                {{session('statut')}}
+                {{session('statutCommande')}}
             </div>
             @endif
             @if ($lescommande->count() > 0)

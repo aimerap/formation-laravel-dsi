@@ -14,7 +14,24 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
+        $collection1 = collect([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        $produits = Produit::all();
+
+        $collection2 = collect([
+            [ "title" => "Le titre du livre 1", "Date" => "01/04/2021", "nbPages" => "10"],
+            [ "title" => "Le titre du livre 2", "Date" => "01/04/2021", "nbPages" => "1000"],
+            [ "title" => "Le titre du livre 3", "Date" => "01/04/2021", "nbPages" => "500"],
+            [ "title" => "Le titre du livre 4", "Date" => "01/04/2021", "nbPages" => "700"],
+            [ "title" => "Le titre du livre 5", "Date" => "01/04/2021", "nbPages" => "900"],
+            [ "title" => "Le titre du livre 6", "Date" => "01/04/2021", "nbPages" => "150"],
+            ]);
+        // dump($collection2);
+        $collectionFiltree = $collection2->filter(function($livre, $key){
+            return $livre["nbPages"] > 500;
+        });
+        dd($collection2->avg("nbPages"));
+
+        dd($produits->first()->designation);
     }
 
     /**
