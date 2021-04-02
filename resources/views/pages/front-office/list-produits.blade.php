@@ -46,8 +46,7 @@
                                     <img class="" src="{{ asset('storage/produits-images/'.$produit->image) }}" alt="">
                                     {{ $produit->designation }}
                                 </td>
-                                <td> {{ bf_currency($produit->prix) }}</td>
-                                <td> {{ $produit->pays_source }} </td>
+                  
                                 <td>
                                     <div class="d-flex">
 
